@@ -1,0 +1,29 @@
+"garrys_royale"
+{
+	"base"		"base"
+	"title"		"Garry's Royale"
+	"category"	"pvp"
+	"menusystem"	"1"
+
+	"settings"
+	{
+		1
+		{
+			"name"		"gbr_starting_cash"
+			"text"		"Starting Cash"
+			"help"		"How much cash the player spawns with"
+			"type"		"Numeric"
+			"default"	"250"
+		}
+
+		
+		2
+		{
+			"name"		"gbr_cash_multiplier"
+			"text"		"Cash Multiplier"
+			"help"		"Multiplies the Cash Earned"
+			"type"		"Numeric"
+			"default"	"1.0"
+		}
+	}
+}

@@ -1,0 +1,5 @@
+language.Add("gbr.tool.bounds_editor", "Edit Storm Bounds")
+language.Add("gbr.tool.prop_placer", "Prop Placer")
+language.Add("gbr.tool.prop_remover", "Prop Remove")
+language.Add("gbr.tool.spawn_creator", "Item Spawners")
+language.Add("gbr.tool.player_spawn", "Edit Map Spawns")

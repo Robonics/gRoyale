@@ -466,3 +466,9 @@ concommand.Add("gbr_reloadspawnlist", GBRLoadActiveList)
 if( not file.Exists("garrys_royale", "DATA") ) then
 	file.CreateDir( "garrys_royale" )
 end
+
+concommand.Add("gbr_toggle_storm_pause", function()
+	local storm = gmod.GetGamemode().Storm
+	storm.meta.paused = not storm.meta.paused
+	GBRSyncStorm()
+end)

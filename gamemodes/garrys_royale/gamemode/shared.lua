@@ -168,6 +168,9 @@ function GM.Storm:DoTick()
 				local theta = math.random(0, 2*math.pi)
 				local magnitude = math.random(0, math.max(self.meta.radius/2, 700)) -- we never move more than half a circle, will always have the chance to move at least 700hu
 				self.meta.next_pos = self.meta.pos + Vector( math.cos(theta)*magnitude, math.sin(theta)*magnitude )
+				self.meta.next_pos.x = math.Clamp( self.meta.next_pos.x, self.meta.valid_bounds.min.x, self.meta.valid_bounds.max.x )
+				self.meta.next_pos.y = math.Clamp( self.meta.next_pos.y, self.meta.valid_bounds.min.y, self.meta.valid_bounds.max.y )
+				self.meta.next_pos.z = math.Clamp( self.meta.next_pos.z, self.meta.valid_bounds.min.z, self.meta.valid_bounds.max.z )
 				-- We generate a random angle and distance from our current point to move from, this ensures our new point will stay within half of our existing circle
 			end
 			GBRSyncStorm() -- Sync the storm when should_shrink flips. While all of this should be predicted, this will sync every circle

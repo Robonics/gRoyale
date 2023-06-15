@@ -67,6 +67,8 @@ local mat_matrix = Matrix()
 	#TODO: Outside of storm?
 	#FIXME: Skybox issues
 	#FIXME: Flickering of models and brushes when outside of storm
+	#FIXME: When storm closes, it is still visible, disable rending when storm closes
+		#TODO: Maybe also multiply VScale? Illusion becomes broken when storm gets smaller. Maybe make VScale increase as radius shrinks
 ]]
 function GBRLegacyStormRender()
 	if(not render_storm) then return end
@@ -74,6 +76,7 @@ function GBRLegacyStormRender()
 	-- local res = math.Clamp(math.ceil(storm.meta.radius/512), 64, 256) #TODO: Come up with a reliable method for determining the res of the sphere
 
 	cam.Start3D()
+
 		render.SetLightingMode( 1 )
 
 		storm_matrix:SetScale( storm_scale )
@@ -143,13 +146,15 @@ local function GenerateMap( x, y, w, h )
 end
 
 hook.Add("HUDPaint", "gbr_storm_info", function()
+
 	local storm = GetStorm()
 
-	local size = 512
-	local x = 0
-	local y = 0
+	local size = 128
+	local x = ScrW() - size - 5
+	local y = 5
 
-	GenerateMap( x, y, size, size )
+	surface.SetDrawColor( 45, 45, 45 )
+	surface.DrawRect( x, y, size, size )
 
 	local w = 90
 	local h = 30
